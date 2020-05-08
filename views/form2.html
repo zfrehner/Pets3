@@ -6,6 +6,15 @@
 </head>
 <body>
 <form action="#" method="post" class="form-horizontal">
+
+    <!--Color-->
+    <label class="col-sm-1 control-label" for="color">Pet Color</label>
+
+    <div class="col-sm-3">
+        <check if="{{isset(@errors['color'])}}">
+            <p>{{ @errors['color'] }}</p>
+        </check>
+
 <select class="form-control" name="color" id="color">
     <option>
         --
@@ -17,6 +26,7 @@
     </repeat>
 
 </select>
+    </div>
 
     <div class="col-xs-3 ">
         <input class="form-control btn btn-default"
