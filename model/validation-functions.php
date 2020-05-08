@@ -17,5 +17,8 @@ function validColor($color)
  *
  */
 function validString($string) {
+
+    global$f3;
+    $f3->get('pet');
     return !empty($string) && ctype_alpha($string);
 }

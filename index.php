@@ -28,9 +28,9 @@ $f3-> route('GET|POST /order', function($f3) {
     //check if the form has been posted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Validate the data
-        var_dump($_POST);
-
+        //var_dump($_POST);
         $pets = $_POST['pet'];
+
         if(validString($pets)) {
            $_SESSION['pet'] = $pets;
            $f3->reroute('/order2');
@@ -47,12 +47,11 @@ $f3->route('GET|POST /order2', function($f3){
     //echo "Thank You!";
     //echo "<p>" . $_SESSION['pet'] . $_SESSION['pets'] . "</p>";
 
-    $_SESSION = array();
 
     //check if the form has been posted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Validate the data
-        var_dump($_POST);
+        //var_dump($_POST);
 
         $color = $_POST['color'];
         if(validColor($color)) {
@@ -68,13 +67,14 @@ $f3->route('GET|POST /order2', function($f3){
 });
 
 $f3->route('GET|POST /summary', function(){
+    //var_dump($_SESSION);
     //echo "Thank You!";
     //echo "<p>" . $_SESSION['pet'] . $_SESSION['pets'] . "</p>";
+
     $view = new Template();
     echo $view->render('views/summary.html');
     session_destroy();
 });
-
 
 //run fat free
 $f3->run();
