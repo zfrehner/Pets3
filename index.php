@@ -12,6 +12,7 @@ require_once("vendor/autoload.php");
 
 //instantiate f3 base class (create an instance of the base class)
 $f3 = Base::instance();
+$f3->set('colors', array('pink', 'green', 'blue'));
 
 //define a default root (what the user sees when they go to index page)
 $f3->route('GET /', function() {
