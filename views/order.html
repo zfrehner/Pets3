@@ -18,8 +18,8 @@
                 <input class="form-control" type="text" name="pet" id="peter">
             </div>
         </div>
-
-        <!-- get pet -->
+<!--
+        &lt;!&ndash; get pet &ndash;&gt;
         <label for="pets">Choose a color:</label>
 
         <select id="pets">
@@ -27,13 +27,19 @@
             <option value="blue" name="pets">Blue</option>
             <option value="green" name="pets">Green</option>
             <option value="yellow" name="pets">Yellow</option>
-        </select>
+        </select>-->
+        <check if="{{ isset(@errors['pet']) }}">
+            <span>{{ @errors['pet'] }}</span>
+        </check>
 
         <div class="col-xs-3 ">
             <input class="form-control btn btn-default"
-                   type="submit" value="Place Order">
+                   type="submit" value="next">
         </div>
     </form>
+
+
+
 </div>
 </body>
 </html>

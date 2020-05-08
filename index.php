@@ -8,6 +8,7 @@ session_start();
 
 //require auto load file
 require_once("vendor/autoload.php");
+require_once('model/validation-functions.php');
 
 //instantiate f3 base class (create an instance of the base class)
 $f3 = Base::instance();
@@ -21,24 +22,20 @@ $f3->route('GET /', function() {
 });
 
 $f3-> route('GET|POST /order', function($f3) {
+
+    $_SESSION = array();
+
     //check if the form has been posted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Validate the data
         var_dump($_POST);
 
-        $pets = array('Red', 'Blue', 'Green', 'Yellow');
-        if (empty($_POST['pet']) || !in_array($_POST['pets'], $pets)) {
-            //data is invalid
-            echo "Please supply a pet type and color.";
+        $pets = $_POST['pet'];
+        if(validString($pets)) {
+           $_SESSION['pet'] = $pets;
+           $f3->reroute('/order2');
         } else {
-            $_SESSION['pet'] = $_POST['pet'];
-            $_SESSION['pets'] = $_POST['pets'];
-
-            //***Add the color to the session
-
-            //Redirect to the summary route
-            $f3->reroute("summary");
-
+            $f3->set("errors['pet']", "Please enter an animal");
         }
     }
 
@@ -46,9 +43,26 @@ $f3-> route('GET|POST /order', function($f3) {
     echo $view->render("views/order.html");
 });
 
-$f3->route('GET|POST /order2', function(){
+$f3->route('GET|POST /order2', function($f3){
     //echo "Thank You!";
     //echo "<p>" . $_SESSION['pet'] . $_SESSION['pets'] . "</p>";
+
+    $_SESSION = array();
+
+    //check if the form has been posted
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //Validate the data
+        var_dump($_POST);
+
+        $color = $_POST['color'];
+        if(validColor($color)) {
+            $_SESSION['color'] = $color;
+            $f3->reroute('/summary');
+        } else {
+            $f3->set("errors['color']", "Please select a color");
+        }
+    }
+
     $view = new Template();
     echo $view->render('views/form2.html');
 });
