@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+<div class="container">
+    <h1>Pet Order</h1>
+
+    <form action="#" method="post" class="form-horizontal">
+
+        <!-- get food -->
+        <div class="form-group">
+            <label for="peter" class="col-sm-2 control-label">What pet would you like to order?</label>
+
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="pet" id="peter">
+            </div>
+        </div>
+
+        <!-- get pet -->
+        <label for="pets">Choose a color:</label>
+
+        <select id="pets">
+            <option value="red" name="pets">Red</option>
+            <option value="blue" name="pets">Blue</option>
+            <option value="green" name="pets">Green</option>
+            <option value="yellow" name="pets">Yellow</option>
+        </select>
+
+        <div class="col-xs-3 ">
+            <input class="form-control btn btn-default"
+                   type="submit" value="Place Order">
+        </div>
+    </form>
+</div>
+</body>
+</html>
