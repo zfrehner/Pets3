@@ -5,9 +5,8 @@
     <title>Form 2</title>
 </head>
 <body>
-<select class="form
--
-control" name="color" id="color">
+<form action="#" method="post" class="form-horizontal">
+<select class="form-control" name="color" id="color">
     <option>
         --
         Select a color
@@ -16,6 +15,8 @@ control" name="color" id="color">
     <repeat group="{{ @colors }}" value="{{ @colorOption }}">
         <option>{{ @colorOption }}</option>
     </repeat>
+
 </select>
+</form>
 </body>
 </html>
