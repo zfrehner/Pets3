@@ -1,4 +1,3 @@
-
 <?php
 
 //turn on error reporting
@@ -12,6 +11,7 @@ require_once("vendor/autoload.php");
 
 //instantiate f3 base class (create an instance of the base class)
 $f3 = Base::instance();
+
 $f3->set('colors', array('pink', 'green', 'blue'));
 
 //define a default root (what the user sees when they go to index page)
@@ -38,7 +38,7 @@ $f3-> route('GET|POST /order', function($f3) {
 
             //Redirect to the summary route
             $f3->reroute("summary");
-            session_destroy();
+
         }
     }
 
@@ -46,11 +46,19 @@ $f3-> route('GET|POST /order', function($f3) {
     echo $view->render("views/order.html");
 });
 
+$f3->route('GET /order2', function(){
+    //echo "Thank You!";
+    //echo "<p>" . $_SESSION['pet'] . $_SESSION['pets'] . "</p>";
+    $view = new Template();
+    echo $view->render('views/form2.html');
+});
+
 $f3->route('GET|POST /summary', function(){
     //echo "Thank You!";
     //echo "<p>" . $_SESSION['pet'] . $_SESSION['pets'] . "</p>";
     $view = new Template();
     echo $view->render('views/summary.html');
+    session_destroy();
 });
 
 

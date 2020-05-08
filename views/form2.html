@@ -13,10 +13,8 @@ control" name="color" id="color">
         Select a color
         --
     </option>
-    <repeat group="{{ @colors }}" value="{{ @colorOption }}"
-    >
-        <option>
-            {{ @colorOption }}</option>
+    <repeat group="{{ @colors }}" value="{{ @colorOption }}">
+        <option>{{ @colorOption }}</option>
     </repeat>
 </select>
 </body>
