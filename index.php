@@ -46,7 +46,7 @@ $f3-> route('GET|POST /order', function($f3) {
     echo $view->render("views/order.html");
 });
 
-$f3->route('GET /order2', function(){
+$f3->route('GET|POST /order2', function(){
     //echo "Thank You!";
     //echo "<p>" . $_SESSION['pet'] . $_SESSION['pets'] . "</p>";
     $view = new Template();
